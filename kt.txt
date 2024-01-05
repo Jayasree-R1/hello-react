@@ -1,0 +1,45 @@
+Emmet - generates code inside vs code (powerful, smooth coding experience, best for front end dev)
+
+html:5 enter - gives basic HTML structure
+
+CDN - place where React library is hosted
+-------------------------------------------
+props are attributes of an element that goes as children of that element
+-------------------------------------------
+const heading = React.createElement(
+  "h1",
+  { id: "heading", className: "randomClassName" }, ----- PROPS of h1 tag
+  "Hello World from React!"
+);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+-------------------------------------------
+ReactElement(Object) ===> HTML(Browser Understands)
+
+React.createElement ===> always creates an Object
+that object becomes tag while rendering through render method
+-------------------------------------------
+core of react is :
+React.createElement("div", { id: "child1" }, [
+    React.createElement("h1", {}, "I am h1 tag"),
+    React.createElement("h2", {}, "I am h2 tag"),
+  ]),
+  React.createElement("div", { id: "child2" }, [
+    React.createElement("h1", {}, "I am h1 tag"),
+    React.createElement("h2", {}, "I am h2 tag"),
+  ])
+
+JSX makes it easy while creating tags.
+-------------------------------------------
+
+Order of script tag files matter.
+
+for example: app.js cannot be prior to reacr and reactdomcdn links
+-------------------------------------------
+
+git init : to initialise the git repository
+
+git branch -M main : creates main as the main/master branch
+
+--------------------------------------------
+
