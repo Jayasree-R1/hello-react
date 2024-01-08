@@ -2,7 +2,9 @@ Emmet - generates code inside vs code (powerful, smooth coding experience, best 
 
 html:5 enter - gives basic HTML structure
 
-CDN - place where React library is hosted
+CDN - place where React library is hosted 
+using CDN links in the script tag is one of the way(costly and many network calls happen) to bring react into our project which is not a preferred way
+Other way is use npm since we already have it in node_modules
 -------------------------------------------
 props are attributes of an element that goes as children of that element
 -------------------------------------------
@@ -41,5 +43,303 @@ git init : to initialise the git repository
 
 git branch -M main : creates main as the main/master branch
 
---------------------------------------------
+---------------------------------------------------------------------------------------------
 
+git and github are two different things --- Read about it
+
+github is a place where one can host git repositories
+
+
+.zsh
+
+/dev/fd/13:18: command not found: compdef
+jshree@JayashreesAir3 hello-react % git init
+Initialized empty Git repository in /Users/jshree/Desktop/hello-react/.git/
+jshree@JayashreesAir3 hello-react % git branch -M main
+error: refname refs/heads/master not found
+fatal: Branch rename failed
+jshree@JayashreesAir3 hello-react % git branch -M main
+error: refname refs/heads/master not found
+fatal: Branch rename failed
+jshree@JayashreesAir3 hello-react % git branch -m main
+error: refname refs/heads/master not found
+fatal: Branch rename failed
+jshree@JayashreesAir3 hello-react % git add .
+jshree@JayashreesAir3 hello-react % git commit -m "This is CLASS-01"
+[master (root-commit) 62e9805] This is CLASS-01
+ 5 files changed, 129 insertions(+)
+ create mode 100644 App.js
+ create mode 100644 README.md
+ create mode 100644 index.css
+ create mode 100644 index.html
+ create mode 100644 kt.txt
+jshree@JayashreesAir3 hello-react % git remote add origin https://github.com/Jayasree-R1/hello-react.git
+jshree@JayashreesAir3 hello-react % git branch -m main
+jshree@JayashreesAir3 hello-react % git push origin main                                                
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/Jayasree-R1/hello-react.git/'
+
+
+I get into this issue too. The reason is that I didn't have any commit on this git repository.
+
+When I run the command git branch -M main. I get the following error message.
+
+error: refname refs/heads/master not found
+fatal: Branch rename failed
+After I add my first commit by the following command, all things work.
+
+git add .
+git commit -m 'Init'
+
+jshree@JayashreesAir3 hello-react % git push origin main
+Counting objects: 7, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 1.77 KiB | 1.77 MiB/s, done.
+Total 7 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/Jayasree-R1/hello-react.git
+ * [new branch]      main -> main
+jshree@JayashreesAir3 hello-react % 
+-------------------------------------------------------------------------------------
+npm 
+-standard repository for all the packages
+-one of the biggest package managers
+-all the libraries/packages utilities are hosted in npm
+-bts works as a node package manager but does not abbreviate/stand for node package manager
+-when you create a basic react app it already has npm in it but you should know how to use npm
+
+jshree@JayashreesAir3 hello-react % npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (hello-react) 
+version: (1.0.0) 
+description: This is Hello React by Jayashree Rangu
+entry point: (App.js) 
+test command: jest
+git repository: (https://github.com/Jayasree-R1/hello-react.git) 
+keywords: react, hello react, jayashree rangu
+author: ISC
+license: (ISC) 
+About to write to /Users/jshree/Desktop/hello-react/package.json:
+
+{
+  "name": "hello-react",
+  "version": "1.0.0",
+  "description": "This is Hello React by Jayashree Rangu",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jayasree-R1/hello-react.git"
+  },
+  "keywords": [
+    "react",
+    "hello",
+    "react",
+    "jayashree",
+    "rangu"
+  ],
+  "author": "Jayashree Rangu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jayasree-R1/hello-react/issues"
+  },
+  "homepage": "https://github.com/Jayasree-R1/hello-react#readme"
+}
+
+
+Is this OK? (yes) 
+npm notice 
+npm notice New major version of npm available! 7.24.0 -> 10.2.5
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v10.2.5
+npm notice Run npm install -g npm@10.2.5 to update!
+npm notice 
+jshree@JayashreesAir3 hello-react % 
+
+This results in a new file in the project called "package.json" (which is a configuration for npm)
+
+npm - package manager - manages packages that we'll install -  packages are nothing but dependencies
+
+npm will take care of the version of those packages in the package.json 
+
+most imp package in project is 'bundler' and examples are webpack,parcel and vite etc
+
+Bundlers bundle up Javascript,css, images and etc altogether
+
+when we create a create react app uses webpack bundler and babel behind the scenes
+
+In our current project we use 'parcel'
+parcel is one of the best libraries out there which we will use to ignite our app.
+
+if the app is skeleton parcel add ons the muscle to strengthen the app
+parcel comes as the node package we install through npm
+
+to install any dependency or package use : npm install -D parcel
+
+why -D???
+
+Dependencies are two types basically:
+1.dev dependency : which is generally required in the development Phase
+2.normal dependency : which is used in production
+
+^ caret (^2.8.3) : to update minor(2.8.4) versions automatically 
+~ tilde (^2.8.3) : to update major(3.8.4) versions automatically
+
+npm install -D parcel
+- above command adds parcel dependency and its version
+- above command also results in new file called pacage-lock.json keeps 
+  the recoed of exact version of that dependency installed
+
+    pacage-lock.json is very imp as it keeps the hash of all the 
+    versions on your machine that can be tracked when pushed to production
+- this also installs a folder called "node_modules"
+
+so basically, package.json is cnfiguration for npm
+node_modules is the database 
+
+package.json consists of the 'dependencies/packages' and its version but
+node_modules consists of all the code of the dependencies/packages
+
+node modules consists of lot of folders in it, since a dependency has inturn a lot of dependencies
+
+node modules is a huge file and
+absolutely no need to push it to git hub.
+you can add them it to git ignore
+
+but package.json and packagelock.json, 
+should definitely be pushed to github
+
+just by having the above files we can create node_modules folder by running "npm install" command
+
+basically add only essential files in the git
+--------------------------------------------------------------------------------
+Ignite the app by 
+"npx parcel index.html"
+here,
+index.html is the source file of the object
+
+Server running at http://localhost:1234
+✨ Built in 639ms
+
+so, parcel created a server(at port 1234) for us
+
+npm install : installs a package
+npx : EXECUTES a package
+--------------------------------------------------------------------------------
+CDN links is not a good way to bring react into project 
+(why?)
+fetching from cdn is a costly call
+
+In the process of fetching from CDN a call is made to unpkg.com to get react but suppose if we already have react in our 
+node modules(which we get from npm) it would be a lot easier to manage all our dependencies and react as well asone of the 
+dependency
+
+React is nothing but -libraries written in Javascript - which is hosted on npm.
+One can get React into the project via npm
+---------------------------------------------------------------------------------
+npm install react, npm install react-dom (no -D since it is normal dependency not a development dependency)
+which installs react and reactDOM dependency in package-lock.json, package.json and also 
+under node_modules
+
+install - i can also be used
+
+<script type="module" src="./App.js"></script>
+
+type="module" is to avoid browser script cannot contain imports
+to say that the script tag is not the regular Javascript
+
+At this step I faced a problem of 
+
+Problem:
+I am in the Episode 02 part 02 of "Igniting the App" section where we remove CDN links and add <script type="module" src="./App.js"></script>  in index.html & add
+import React from "react";
+import ReactDOM from "react-dom/client";
+in app.js.
+
+results in
+
+Error: Expected content key de1e4a02ec63c4eb to exist
+
+  Error: Expected content key de1e4a02ec63c4eb to exist
+      at nullthrows (/Users/jshree/Desktop/hello-react/node_modules/nullthrows/nullthrows.js:7:15)
+      at AssetGraph.getNodeIdByContentKey 
+
+Solution:
+delete parcel cache.
+Clear the node_modules and reinstall the dependenices again. 
+
+I deleted node_modules and ran npm install and npx parcel index.html to initiate server
+
+----------------------------------------------------------
+
+In our HTML we are injecting app.js , it treats app.js as a normal Javascript and normal JS does not have import
+
+But in our App.js we have import statements.So to announce App.js as not a regular Javascript 
+we write thetype as "module"
+
+<script type="module" src="./App.js"></script>
+
+and add
+import React from "react";
+import ReactDOM from "react-dom";
+results in
+Warning: You are importing createRoot from "react-dom" which is not supported. You should instead import it from "react-dom/client".
+fix:
+import ReactDOM from "react-dom/client";
+
+--------------------------------------------------------------------------
+  "name": "hello-react",
+  "version": "1.0.0",
+  "description": "This is Hello React by Jayashree Rangu",
+  "main": "App.js"
+
+Remove 
+"main": "App.js", from pakage.json since it gets in conflict with parcel where parcel sees index.html as 
+an entry point whereas in package.json "main": "App.js" indicates app.js as entry point.
+
+so remove that line before executing the below command
+npx parcel build index.html --> prod build
+- it'll bundle,minify and put all those files in "dist" folder (parcel-cache, node_modules, dist can be automatically generated and need not to be in github
+just add them in gitignore)
+
+1:48:02 - ep 02
+
+Dev Build:
+JayashreesAir3:hello-react jshree$ npx parcel index.html
+Server running at http://localhost:1234
+
+Prod Build:
+JayashreesAir3:hello-react jshree$ npx parcel build index.html
+✨ Built in 182ms
+
+dist/index.html                461 B    409ms
+dist/index.a7718008.css        131 B     87ms
+dist/index.f7cee2b7.js     139.14 KB    411ms
+
+All the code that is written, is compressed and minified to above 3 files.
+The above 3 files are Production Ready Code which is highly optimised build and served to the end user
+
+1:54 Ep-02
+
+---------------------
+
+Browserslist is an npm package (it needs some configuration)
+goto browserlist.dev such a powerful tool
+
+You have to tell yur project what all browsers should your app be supported in by adding browserslist in package.json
+example:
+"browserslist": [
+    "last 2 chrome version",
+    "last 2 Firefox version"
+  ]
