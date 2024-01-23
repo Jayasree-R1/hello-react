@@ -225,7 +225,7 @@ just by having the above files we can create node_modules folder by running "npm
 basically add only essential files in the git
 --------------------------------------------------------------------------------
 Ignite the app by 
-"npx parcel index.html"
+"npx parcel index.html" : creates a development build and hosts it up on 1234 (by parcel)
 here,
 index.html is the source file of the object
 
@@ -297,6 +297,40 @@ results in
 Warning: You are importing createRoot from "react-dom" which is not supported. You should instead import it from "react-dom/client".
 fix:
 import ReactDOM from "react-dom/client";
+--------------------------------------------------------------------------
+
+#Pracel
+-Builds Dev Build
+-Gives us a Local Server
+-Hosts that Build in the local server
+-HMR - Hot Module Replacement
+(Automaatically refreshing browser also whch is called as)
+-File watching Algorithms - written in c++
+(Parcel uses file watching algorithm which is written in C++)
+-Caching - Faster Builds (500ms to 13ms)
+(Parcel is also Caching things for you which gives you Faster Builds)
+/Users/jshree/Desktop/hello-react/.parcel-cache
+-Image Optimization
+-Minification of files(for Production Build)
+-Bundling
+-Compress
+-Consistent Hashing (Read about it)
+-code Splittig
+-Differential Bundling - to support older Browsers
+-Diagnostic
+-Error Handling(better suggestions and neat)
+-lets you Host on HTTPs
+-Tree Shaking Algo - removes unused code
+-Different dev and prod bundles
+
+Read Parcel Documentation
+parcel.js/org
+
+PARCEL YOU BEAST!!!!
+
+React apps are fast because react is not the only thing that is making a react app fast.
+There are so many things in the background.
+For example : Parcel (which inturn uses other libraries)
 
 --------------------------------------------------------------------------
   "name": "hello-react",
@@ -343,3 +377,439 @@ example:
     "last 2 chrome version",
     "last 2 Firefox version"
   ]
+index.html upto now
+  body>
+    <div id="root">
+      <!--<h1>Hello World from HTML!</h1>-->
+      <!--
+      <script>
+        const heading = document.createElement("h1");
+        heading.innerHTML = "Hello World! from JavaScript!";
+        const main = document.getElementById("root");
+        main.appendChild(heading);
+      </script>
+      -->
+      <h1>Jshree is Here!</h1>
+      <h1>Jshree is Here!</h1>
+      <h1>Jshree is Here!</h1>
+      <h1>Jshree is Here!</h1>
+      <!-- <script
+        crossorigin
+        src="https://unpkg.com/react@18/umd/react.development.js"
+      ></script>
+      <script
+        crossorigin
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      ></script> -->
+      <script type="module" src="./App.js"></script>
+    </div>
+  </body>
+</html>
+
+
+app.js upto now
+
+
+// const heading = React.createElement(
+//   "h1",
+//   { id: "heading", className: "randomClassName" },
+//   "Hello World from React!"
+// );
+
+// const parent = React.createElement("div", { id: "parent" }, [
+//   React.createElement("div", { id: "child1" }, [
+//     React.createElement("h1", {}, "Hello React 🙋🏻‍♀️"),
+//     React.createElement("h2", {}, "I am h2 tag"),
+//   ]),
+//   React.createElement("div", { id: "child2" }, [
+//     React.createElement("h1", {}, "I am h1 tag"),
+//     React.createElement("h2", {}, "I am h2 tag"),
+//   ]),
+// ]);
+
+// //console.log(heading); // object not tag yet.
+// console.log(parent);
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// //root.render(heading); // render function is to take the heading object and convert into heading tag and put it on the top
+// root.render(parent);
+
+
+----------------------------------------------------
+instead of executing 
+npx parcel index.html - to create a development build 
+these commands are different for production build and development build
+
+Instead of running the above comands again and again,
+we create scripts
+
+we create npm scripts in package.json to build our prod ready app
+
+let us create a script to build our project in dev 
+write as below in scripts in package.json
+"start": "parcel inde.html",
+"build": "parcel build index.html",
+
+Above two commands can be used to see how a project is built in a new company
+
+To run these scripts we use npm run start (since start is the mae of command)
+
+ayashreesAir3:hello-react jshree$ npm run start
+
+> hello-react@1.0.0 start
+> parcel index.html
+
+Server running at http://localhost:1234
+✨ Built in 1.10s
+
+
+npm start is the shortcut only for start through
+npm start=npm run start (bts calls parcel index.html )
+---------------
+React.createElement creates an object 
+when we render these react elements onto the DOM it becomes HTML element 
+React.createElement(a React Element) ==> JS object ==> HTMLElement(render) we see on the browser
+
+
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "Hello-to-React🙋🏻‍♀️"
+);
+
+//dealing with browsers => ReactDOM Package to display on the browser
+const root = ReactDOM.createRoot(document.getElementById("root"));
+//This root will be the root for react App
+// whatever happens in React will happen in this Root
+
+root.render(heading);
+
+// REactDOM replaces everything in root with whatever is being rendered
+
+// Everything in react is an object
+
+----------------------
+
+<div id="root">
+  <h1>NOT Rendered!</h1>  
+</div>
+
+above structure looks  better than the below
+
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "Hello-to-React🙋🏻‍♀️"
+);
+
+esp. when compared to create the nested structure
+
+Facebook community came up with JSX
+
+JSX - JS syntax easier to create HTML elements
+
+JSX is NOT a part of React
+
+REACT can be written WITHOUT JSX also but JSX makes a developers life easy.
+
+JSX is separate and REACT is separate
+
+-------------------------------------------------
+Before FRAMEWORKS
+different files for each below
+html(skeleton & markup)>>css>>JS(logic)
+
+FRAMEWORKS(ex: ANGULAR) and LIBRARIES (ex: REACT)
+tries to merge all these things
+html(skeleton & markup) + css + JS(logic)
+
+JSX:
+JS + HTML
+
+NOTE: JSX is NOT HTML inside JavaScript!!! JSX is JSX. 😬
+JSX is HTML LIKE  or XML LIKE SYNTAX
+
+Creating an h1 tag without createElementex:
+const JSXHeading = <h1> Hello React using JSX</h1>;
+
+instead of 
+
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "Hello React using core React🙋🏻‍♀️"
+);
+--------------------------------------------------------------------------------------
+In
+const JSXHeading = <h1 id="heading> Hello React using JSX</h1>;
+
+<h1> Hello React using JSX</h1>; is JSX 
+when the above is executed it becomes REACT Element
+JSXHeading is a React Element (after execution)
+
+JS Engine understand ES6 which is ECMA Script 6 and all other versions which is pure JS
+
+Browser does not understand 
+const JSXHeading = <h1 id="heading> Hello React using JSX</h1>;
+Since above sentence is JSX and not JavaScript
+
+Parcel is doing the JOB BTS 
+
+code developed by us ==> it is transpiled before it goes to the JS engine 
+and then JS engine receives the code that browsers can understand
+
+transpiled: converted to te code that browsers/React can understand
+
+who is transpiling??? PARCEL!!! but it takes help of a package called BABEL!!!
+
+BABEL is a JS Package installed by PARCEL
+
+node_modules>>@babel
+
+As soon as you write something and save the file PARCEL builds it,
+immediately BABEL transpiles the code that React understands.
+
+BABEL is not created by JavaScript
+
+But How is this code running??
+React.createElement(a React Element) ==> JS Object ==> HTMLElement(render) we see on the browser
+
+coming to JSX
+JSX ==> React.createElement(a React Element) ==> JS Object ==> HTMLElement(render) we see on the browser
+
+which is why 
+heading object and JSXHeading are same objects
+
+but who is converting this code??
+BABEL it is!! BABEL is a champ in converting the code to adifferent kind of code.... 
+BABEL is a transpiler, an Open sourec JS Compiler and many more
+goto babeljs.io and see the magic
+
+Beginning from now we don't use React.createElement instead we use JSX.
+----------------------------------------------------------------------
+Diff b/n JSX and HTML
+in JSX we give as className="";
+but in HTML it is class="";
+
+<h1 className="JSXClass"> Hello React using JSX</h1>; JSX structure in App.js 
+after execution is seen as 
+<h1 class="JSXClass"> Hello React using JSX</h1> HTML structure in browser Element tab 
+
+NOTE: if you need to give attributes in JSX it has to be in camelCase
+HW: Explore various attributes of various tags
+ex: how to <img>, <a>, etc in JSX 
+
+If JSX is multiple lines wrap it in Paranthesis
+-----------------------------------------------------------------------
+Extensions Used:
+Prettier
+Bracket Pair Colorization Toggler
+ES Lint
+Better Comments
+------------------------------------
+upto now app.jsimport React from "react";
+import ReactDOM from "react-dom/client";
+
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "Hello React using core React"
+);
+
+console.log(heading);
+//JSX
+const JSXHeading = (
+  <h1 className="JSXClass" tabIndex="5">
+    Hello React using JSX
+  </h1>
+);
+console.log(JSXHeading);
+
+//dealing with browsers => ReactDOM Package to display on the browser
+const root = ReactDOM.createRoot(document.getElementById("root"));
+//This root will be the root for react App
+// whatever happens in React will happen in this Root
+
+root.render(JSXHeading);
+
+// REactDOM replaces everything in root with whatever is being rendered
+
+// Everything in react is an object
+--------------------------------------------------------------------------
+REACT COMPONENTS:
+
+-EVERYTHING is a COMPONENT in React
+ex: button, input box, Header, footer, drop down
+
+React components ar two types:
+1) CLASS Based components (older way of writing components)
+- CLASS Based component uses JavaScript classes to create components
+2) FUNCTIONAL Based Components (NEW way)
+- FUNCTIONAL Based Components uses functions to create components
+------------------------------------------------------------------------------
+React Functional Component: is just a normal JS function which 
+returns some JSX or React Element which can be nested as well.
+NOTE: Capitalize the first letter of a React Componnet(Functional/Class) to avoid error
+
+//React Functional Component (with normal function syntax) 
+const HeadingComp = () => {
+  return <h1> Hello React Functional Component</h1>;
+};
+
+Above syntax is explicit (very common)
+You can skip the key word 'return' if it is just one line 
+
+//React Functional Component (with Arrow Function Sytax)
+const HeadingComp = () => {
+  <h1> Hello React Functional Component</h1>;
+}; 
+
+or
+
+//React Functional Component
+const HeadingComp = () =><h1> Hello React Functional Component</h1>;
+
+add paranthesis for multiple or nested React elements
+
+//React Functional Component
+const HeadingComp = () => (
+  <div id="container">
+    <h1> Hello React Functional Component</h1>;
+  </div>
+);
+
+React element is easily converted to React Functional Component just by capitalizing the firts letter and making it an arrow function lol.
+
+
+//React Element
+const heading = (
+  <h1 className="JSXClass" tabIndex="5">
+    Hello React using JSX
+  </h1>
+);
+//React Functional Component
+const HeadingComp = () => (
+  <div id="container">
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
+------------------------------------------------------------------------------
+ Diff b/n Element and Component??
+-------------------------------------------------------------------------------
+Ok, How to rebder a component??
+root.render(HeadingComp) WRONG!!!!
+root.render(<HeadingComp/>) CORRECT.
+----------------------------------------------
+onst Title = () => (
+  <h1 className="JSXClass" tabIndex="5">
+    Hello React using JSX
+  </h1>
+);
+
+const HeadingComp = () => (
+  <div id="container">
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
+
+
+How to render Title Component inside HeadingComp in above code??
+
+SOL:
+const HeadingComp = () => (
+  <div id="container">
+    <Title/>
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
+
+or
+
+const HeadingComp = () => (
+  <div id="container">
+    <Title><Title/>
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
+
+or
+
+const HeadingComp = () => (
+  <div id="container">
+    {Title()} (since end of the data Title() is a JS function)
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
+
+Above all are same
+
+in browser we see the above code LIKE
+<div id="container"><h1 class="JSXClass" tabindex="5">Hello React using JSX</h1><h1> Hello React Functional Component</h1></div>
+-------------------------------------------------------------
+//Component Composition
+const HeadingComp = () => (
+  <div id="container">
+    <Title />
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
+Above is called the Component Composition
+-composing components into one another
+----------------------------------------------------------------
+How to render React Element in Functional Component
+ok but, below point
+
+Inside JSX withing the {  } you can run any piece of JavaScript code 
+ex:
+const HeadingComp = () => (
+  <div id="container">
+    <h2>{number + 456 + "Jayashree"}</h2>
+    <Title />
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
+
+so, now how to render React Element in Functional Component
+//React Element
+const titleElement = (
+  <h1 className="JSXClass" tabIndex="5">
+    Hello React using JSX
+  </h1>
+);
+
+//React Func Comp
+const TitleFuncComp = () => (
+  <h1 className="JSXClass" tabIndex="5">
+    Hello React using JSX
+  </h1>
+);
+
+const number = 10000;
+
+const HeadingComp = () => (
+  <div id="container">
+    <h2>{titleElement}</h2>
+    <TitleFuncComp />
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
+-------------------------------------------------------------
+How to render React Element inside React Element
+
+//React Element1
+const elem = <span>eact element</span>;
+
+//React Element2
+const titleElement = (
+  <h1 className="JSXClass" tabIndex="5">
+    {elem}
+    Hello React using JSX
+  </h1>
+);
+--------------------------------------------------------------
+NOTE: cants use something before initialization in JS
+---------------------------------------------------------------
+EP 3 : last 15 mins
+---------------------------------------------------------------
+JSX taks care of Injecting attacks and cross site scripting attacks
+JSX sanitizes the data anything in between { }
+----------------------------------------------------------------

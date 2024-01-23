@@ -1,5 +1,7 @@
-.randomClassName {
-  font-size: xx-large;
-  font-style: italic;
-  color: brown;
+#heading {
+  color: #2a45a5;
+}
+
+.JSXClass {
+  color: rgb(50, 139, 26);
 }

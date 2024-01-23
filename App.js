@@ -1,25 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = React.createElement(
-  "h1",
-  { id: "heading", className: "randomClassName" },
-  "Hello World from React!"
+//React Element1
+const elem = <span>React element</span>;
+
+//React Element2
+const titleElement = (
+  <h1 className="JSXClass" tabIndex="5">
+    <h2>{elem}</h2>
+    Hello React using JSX
+  </h1>
 );
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", {}, "Hello React 🙋🏻‍♀️"),
-    React.createElement("h2", {}, "I am h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "I am h1 tag"),
-    React.createElement("h2", {}, "I am h2 tag"),
-  ]),
-]);
+//React Func Comp
+const TitleFuncComp = () => (
+  <h1 className="JSXClass" tabIndex="5">
+    Hello React using JSX
+  </h1>
+);
 
-//console.log(heading); // object not tag yet.
-console.log(parent);
+const number = 10000;
+
+const HeadingComp = () => (
+  <div id="container">
+    <h2>{titleElement}</h2>
+    <TitleFuncComp />
+    <h1> Hello React Functional Component</h1>
+  </div>
+);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-//root.render(heading); // render function is to take the heading object and convert into heading tag and put it on the top
-root.render(parent);
+
+root.render(titleElement);
